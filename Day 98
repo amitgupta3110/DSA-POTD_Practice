@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<string> removeSubfolders(vector<string>& folder) {
+
+        sort(folder.begin(),folder.end());
+        vector<string> res;
+
+        string prev = folder[0];
+        res.push_back(prev);
+
+        for(int i=1;i<folder.size();i++)
+        {
+            string s = folder[i];
+
+            if(s.size() > prev.size() && s.substr(0,prev.size()) == prev && s[prev.size()]=='/')
+            continue;
+            else{
+                res.push_back(s);
+                prev = s;
+            }
+        }
+
+        return res;
+    }
+};
